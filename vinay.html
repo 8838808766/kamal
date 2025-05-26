@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Popup Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #007BFF;
+    }
+
+    .modal img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .modal form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal form button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal form button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="button" onclick="openModal('text')">Show Text</button>
+  <button class="button" onclick="openModal('image')">Show Image</button>
+  <button class="button" onclick="openModal('form')">Show Form</button>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalBody">
+        <!-- Dynamic content will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(type) {
+      const modal = document.getElementById('myModal');
+      const modalBody = document.getElementById('modalBody');
+      modal.style.display = 'flex';
+
+      let content = '';
+
+      if (type === 'text') {
+        content = '<h2>Welcome to Our Website!</h2><p>Enjoy browsing through our content.</p>';
+      } else if (type === 'image') {
+        content = '<h2>Our Latest Product</h2><img src="https://via.placeholder.com/400" alt="Product Image">';
+      } else if (type === 'form') {
+        content = `
+          <h2>Contact Us</h2>
+          <form>
+            <input type="text" placeholder="Your Name" required><br>
+            <input type="email" placeholder="Your Email" required><br>
+            <button type="submit">Submit</button>
+          </form>
+        `;
+      }
+
+      modalBody.innerHTML = content;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('myModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal if clicked outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('myModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
