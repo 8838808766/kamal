@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup Modal</title>
+  <title>Dynamic Popup Example</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,72 +23,71 @@
       text-decoration: none;
       border-radius: 5px;
       cursor: pointer;
+      margin: 5px;
     }
 
-    .overlay {
+    .modal {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.7);
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s, opacity 0.5s ease;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
-    .overlay:target {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .popup {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .modal-content {
       background: white;
       padding: 20px;
       border-radius: 5px;
-      width: 300px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
     }
 
-    .popup h2 {
+    .modal-content h2 {
       margin-top: 0;
     }
 
-    .popup .close {
+    .close {
       position: absolute;
       top: 10px;
       right: 10px;
-      text-decoration: none;
       font-size: 20px;
       color: #333;
+      cursor: pointer;
     }
 
-    .popup .close:hover {
+    .close:hover {
       color: #007BFF;
     }
 
-    .popup .content {
-      margin-top: 20px;
+    .modal img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
     }
-  </style>
-</head>
-<body>
 
-  <a href="#popup1" class="button">Open Popup</a>
+    .modal form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-  <div id="popup1" class="overlay">
-    <div class="popup">
-      <h2>Popup Title</h2>
-      <a href="#" class="close">&times;</a>
-      <div class="content">
-        <p>This is a simple popup/modal created using only HTML and CSS. No JavaScript is required!</p>
-      </div>
-    </div>
-  </div>
+    .modal form button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-</body>
-</html>
+    .modal form button:hover {
+      backgroun
+
